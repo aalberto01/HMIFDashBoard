@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-layout',
@@ -15,4 +17,25 @@ import { Component } from '@angular/core';
 })
 export class LoginLayoutComponent {
 
+
+  // private fb = Inject(FormBuilder);
+
+  loginForm = this.fb.group({
+    email: ['',[Validators.required, Validators.email]],
+    password: ['',Validators.required]
+  })
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router
+  ){
+
+  }
+
+  public onLogin():void{
+
+    if( this.loginForm.invalid ) return;
+
+    this.router.navigateByUrl('/dashboard')
+  }
 }

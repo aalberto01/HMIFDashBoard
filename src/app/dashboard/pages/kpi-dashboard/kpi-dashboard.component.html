@@ -13,8 +13,8 @@
     </article>
 
     <article class="flex-grow">
-      <app-card [title]="'Total Clientes'">
-        <span class="text-white text-3xl text-center w-full block font-normal ">30</span>
+      <app-card [title]="'Satisfacción Clientes'">
+        <span class="text-white text-3xl text-center w-full block font-normal ">8</span>
       </app-card>
     </article>
   </section>
@@ -22,13 +22,13 @@
   <section class="flex flex-wrap gap-3 justify-center ">
     <article>
       <app-card [title]="'total compras x cliente top 3'" >
-        <app-pie-chart></app-pie-chart>
+        <app-pie-chart [pieChartDatasets]="dataSet1" [pieChartLabels]="labels1"></app-pie-chart>
       </app-card>
     </article>
 
     <article>
       <app-card [title]="'visitas x cliente top 3'" >
-        <app-pie-chart></app-pie-chart>
+        <app-pie-chart [pieChartDatasets]="dataSet2" [pieChartLabels]="labels2"></app-pie-chart>
       </app-card>
     </article>
   </section>

@@ -11,6 +11,7 @@ import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { NavbarComponent } from '../components';
 import {MatInputModule} from '@angular/material/input';
 import { HmifInputComponent } from '../components/hmif-input/hmif-input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HmifInputComponent } from '../components/hmif-input/hmif-input.componen
     RouterModule,
     NavbarComponent,
     MatInputModule,
-    HmifInputComponent
+    HmifInputComponent,
+    ReactiveFormsModule
   ],
   exports: [NavigationBarComponent]
 })

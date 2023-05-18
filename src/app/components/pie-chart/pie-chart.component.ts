@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
 
-import { ChartOptions } from 'chart.js';
+import { type ChartDataset, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-pie-chart',
@@ -14,6 +14,9 @@ import { ChartOptions } from 'chart.js';
 })
 export class PieChartComponent {
   title = 'ng2-charts-demo';
+
+  @Input() pieChartDatasets = [{data: [1,2]}];
+  @Input() pieChartLabels: string[] = []
 
   // Pie
   public pieChartOptions: ChartOptions<'pie'> = {
@@ -32,10 +35,10 @@ export class PieChartComponent {
       }
     }
   };
-  public pieChartLabels = [ 'Barena', 'Salva', 'Miller' ];
-  public pieChartDatasets = [ {
-    data: [ 300, 500, 100 ]
-  }];
+  // public pieChartLabels = [ 'Barena', 'Salva', 'Miller' ];pieChartLabels
+  // public pieChartDatasets = [ {
+  //   data: [ 300, 500, 100 ]
+  // }];
   public pieChartLegend = true;
   public pieChartPlugins = [];
 }
