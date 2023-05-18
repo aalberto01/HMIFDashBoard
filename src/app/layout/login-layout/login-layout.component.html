@@ -1,0 +1,27 @@
+<main class="bg-slate-800 w-full flex">
+
+    <img class="responsive-img h-screen md:w-4/6 hidden md:block" src="https://images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb" alt="">
+
+
+    <div class="p-4 flex justify-center items-center h-screen w-full">
+      <form>
+        <h1 class="text-white">Login</h1>
+
+        <!-- <mat-form-field class="w-full rounded-xl">
+          <mat-label >Correo</mat-label>
+          <input   matInput placeholder="example@gmail.com">
+        </mat-form-field> -->
+
+        <app-hmif-input [type]="'email'" [icon]="'alternate_email'"></app-hmif-input>
+
+        <mat-form-field class="w-full">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" placeholder="********">
+        </mat-form-field>
+
+        <button mat-flat-button class="w-full bg-slate-600 text-white">Iniciar Sesión</button>
+      </form>
+    </div>
+
+
+</main>
