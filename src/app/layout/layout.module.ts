@@ -10,8 +10,8 @@ import { RouterModule } from '@angular/router';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { NavbarComponent } from '../components';
 import {MatInputModule} from '@angular/material/input';
-import { HmifInputComponent } from '../components/hmif-input/hmif-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from '../auth/auth.module';
 
 
 @NgModule({
@@ -26,8 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     NavbarComponent,
     MatInputModule,
-    HmifInputComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule
   ],
   exports: [NavigationBarComponent]
 })

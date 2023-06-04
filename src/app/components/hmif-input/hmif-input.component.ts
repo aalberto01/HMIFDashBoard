@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, forwardRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { AbstractControl, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 
 type inputTypes = 'text' | 'email' | 'tel' | 'password';
 
@@ -13,9 +13,19 @@ type inputTypes = 'text' | 'email' | 'tel' | 'password';
   standalone: true,
   imports: [CommonModule, MatButtonModule, MatInputModule, MatIconModule, ReactiveFormsModule],
   templateUrl: './hmif-input.component.html',
-  styleUrls: ['./hmif-input.component.scss']
+  styleUrls: ['./hmif-input.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(
+        () => HmifInputComponent
+      ),
+      multi: true
+    }
+  ]
 })
-export class HmifInputComponent {
+export class HmifInputComponent implements ControlValueAccessor {
+
   @Input({required: true})
   type: inputTypes = 'text';
 
@@ -28,6 +38,22 @@ export class HmifInputComponent {
   @Input()
   placeholder: string = ''
 
-  @Input({required:true})
-  formControl!: AbstractControl;
+  value: FormControl = new FormControl();
+
+  onChange = ( value: string ) => {};
+  onTouch = () => {};
+
+  writeValue(value: string): void {
+    this.value.setValue(value);
+  }
+  registerOnChange(fn:  (value: string) => void ): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: () => void ): void {
+    this.onTouch = fn;
+  }
+  // setDisabledState?(isDisabled: boolean): void {
+  //   throw new Error('Method not implemented.');
+  // }
+
 }

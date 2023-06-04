@@ -33,9 +33,9 @@ export class LoginLayoutComponent {
   }
 
   public onLogin():void{
+    console.log(this.loginForm)
+    // if( this.loginForm.invalid ) return;
 
-    if( this.loginForm.invalid ) return;
-
-    this.router.navigateByUrl('/dashboard')
+    // this.router.navigateByUrl('/dashboard')
   }
 }

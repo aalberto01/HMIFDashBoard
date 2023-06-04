@@ -18,6 +18,18 @@ export class PieChartComponent {
   @Input() pieChartDatasets = [{data: [1,2]}];
   @Input() pieChartLabels: string[] = []
 
+  private colors = [
+    {
+      backgroundColor: [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(0, 255, 0, 0.2)',
+        'rgba(102, 0, 204, 0.2)',
+        'rgba(255, 128, 0, 0.2)'
+      ]
+    }
+  ]
   // Pie
   public pieChartOptions: ChartOptions<'pie'> = {
     responsive: false,

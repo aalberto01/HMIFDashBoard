@@ -1,0 +1,25 @@
+<div class="p-4 flex justify-center items-center h-screen w-full">
+  <form [formGroup]="loginForm">
+    <h1 class="text-white text-3xl mb-16">Inicio De Sesión</h1>
+
+
+    <mat-form-field class="w-full text-white" appearance="outline">
+      <mat-label class="text-white">Correo Electronico</mat-label>
+      <input formControlName = "email" class="text-white placeholder:text-gray-500" type="email" matInput placeholder="ejemplo@gmail.com">
+      <mat-icon matSuffix>alternate_email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field class="w-full text-white" appearance="outline">
+      <mat-label class="text-white">Contraseña</mat-label>
+      <input formControlName = "password" class="text-white placeholder:text-gray-500" type="password" matInput >
+      <mat-icon matSuffix>password</mat-icon>
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      (click)="onLogin()"
+      class="w-full bg-slate-500 text-white mt-16">
+      Iniciar Sesión
+    </button>
+  </form>
+</div>

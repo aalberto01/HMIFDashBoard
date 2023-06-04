@@ -13,6 +13,7 @@ import { MatListModule } from '@angular/material/list';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { LayoutModule } from './layout/layout.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LayoutModule } from './layout/layout.module';
     BrowserAnimationsModule,
     PieChartComponent,
     DashboardModule,
-    LayoutModule
+    LayoutModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

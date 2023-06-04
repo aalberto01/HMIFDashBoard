@@ -3,56 +3,7 @@
     <img class="responsive-img h-screen md:w-4/6 hidden md:block" src="https://res.cloudinary.com/dokdnq8ys/image/upload/c_pad,b_auto:predominant,fl_preserve_transparency/v1684390881/Dashboard-HMIF/login-img_gkfry9.jpg?_s=public-apps" alt="">
 
 
-    <div class="p-4 flex justify-center items-center h-screen w-full">
-      <form [formGroup]="loginForm">
-        <h1 class="text-white text-3xl mb-16">Inicio De Sesión</h1>
-
-        <!-- <mat-form-field class="w-full rounded-xl">
-          <mat-label >Correo</mat-label>
-          <input   matInput placeholder="example@gmail.com">
-        </mat-form-field> -->
-
-        <!-- <app-hmif-input
-          [type]="'email'"
-          [icon]="'alternate_email'"
-          labelText="Correo Electronico"
-          placeholder="ejemplo@gmail.com"
-          [formControl]="loginForm.get('email')"
-        />
-
-        <app-hmif-input
-          [type]="'password'"
-          [icon]="'password'"
-          labelText="Contraseña"
-          [formControl]="loginForm.get('password')"
-        /> -->
-
-        <!-- <mat-form-field class="w-full" appearance="outline">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" placeholder="********">
-        </mat-form-field> -->
-
-
-        <mat-form-field class="w-full text-white" appearance="outline">
-          <mat-label class="text-white">Correo Electronico</mat-label>
-          <input formControlName = "email" class="text-white placeholder:text-gray-500" type="email" matInput placeholder="ejemplo@gmail.com">
-          <mat-icon matSuffix>alternate_email</mat-icon>
-        </mat-form-field>
-
-        <mat-form-field class="w-full text-white" appearance="outline">
-          <mat-label class="text-white">Contraseña</mat-label>
-          <input formControlName = "password" class="text-white placeholder:text-gray-500" type="password" matInput >
-          <mat-icon matSuffix>password</mat-icon>
-        </mat-form-field>
-
-        <button
-          mat-flat-button
-          (click)="onLogin()"
-          class="w-full bg-slate-500 text-white mt-16">
-          Iniciar Sesión
-        </button>
-      </form>
-    </div>
+    <router-outlet></router-outlet>
 
 
 </main>
