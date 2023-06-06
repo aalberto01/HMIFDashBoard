@@ -1,23 +1,14 @@
-import { Component } from '@angular/core';
+import { Component,  inject } from '@angular/core';
+import { KpiService } from '../../services/kpi.service';
 
 @Component({
   selector: 'app-kpi-dashboard',
   templateUrl: './kpi-dashboard.component.html',
-  styles: [
-  ]
 })
-export class KpiDashboardComponent {
+export class KpiDashboardComponent  {
+  private kpiService = inject(KpiService);
 
-  // public dataSet1 = [2000, 1000, 5000]
-  public dataSet1 = [ {
-    data: [2000, 1000, 5000]
-  }];
-  public labels1 = ['Pedro', 'Juan', 'Jaime']
+  public visitsXClient$ = this.kpiService.getVisitXClient();
 
-  // public dataSet2 = [3, 1, 5]
-  public dataSet2 = [ {
-    data: [3, 1, 5]
-  }];
-  public labels2 = ['Pedro', 'Juan', 'Jaime']
-
+  public sellsXClient$ = this.kpiService.getSellsXClient();
 }

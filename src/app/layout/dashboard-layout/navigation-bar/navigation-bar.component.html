@@ -16,26 +16,15 @@
     </mat-toolbar>
     <mat-nav-list >
       <a
+        *ngFor="let menuItem of menuItems"
         mat-list-item
         class="hover:bg-slate-800"
         routerLinkActive="bg-slate-800"
-        routerLink="/dashboard/kpi">
-        <span class="text-gray-100 flex justify-start gap-4 flex-row items-center">
-          Indicadores KPI
-          <mat-icon aria-hidden="false" aria-label="chart" fontIcon="">bar_chart_4_bars</mat-icon>
-        </span>
-      </a>
-      <a
-        mat-list-item
-        class="hover:bg-slate-800"
-        routerLink="/">
-        <span class="text-gray-100">Recomendaciones</span>
-      </a>
-      <a
-        mat-list-item
-        class="hover:bg-slate-800"
-        routerLink="/">
-        <span class="text-gray-100">Salir</span>
+        [routerLink]="menuItem.route">
+          <span class="text-gray-100">
+            {{menuItem.text}}
+          </span>
+          <mat-icon matListItemIcon class="text-gray-100" aria-hidden="false" aria-label="chart" >{{menuItem.icon}}</mat-icon>
       </a>
     </mat-nav-list>
   </mat-sidenav>

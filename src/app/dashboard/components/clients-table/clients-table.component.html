@@ -1,0 +1,57 @@
+<div class="w-full border-gray-100 flex flex-col">
+  <label class="text-gray-100" for="filter">Filtro Busqueda</label>
+  <input id="filter" class="text-gray-100 bg-slate-900 p-2 border-slate-800 border-2 mt-2 rounded-md" matInput (keyup)="applyFilter($event)" placeholder="Buscar..." #input>
+</div>
+
+<div class=" shadow shadow-slate-500">
+  <div class="overflow-y-auto mt-5 rounded-lg">
+    <table mat-table class="bg-slate-900  w-full" [dataSource]="dataSource" matSort>
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="contact">
+        <th class="text-gray-100 border-b-2 border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Contacto </th>
+        <td class="text-gray-100" mat-cell *matCellDef="let row"> {{row.contact}} </td>
+      </ng-container>
+
+      <!-- Progress Column -->
+      <ng-container matColumnDef="priority">
+        <th class="text-gray-100 border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Prioridad </th>
+        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.priority}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="phone">
+        <th class="text-gray-100  border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
+        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.phone}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="email">
+        <th class="text-gray-100  border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
+        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.email}} </td>
+      </ng-container>
+
+       <!-- Fruit Column -->
+       <ng-container matColumnDef="contactCounter">
+        <th class="text-gray-100  border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Veces Contactado</th>
+        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.contactCounter}} </td>
+      </ng-container>
+
+       <!-- Fruit Column -->
+       <ng-container matColumnDef="totalSells">
+        <th class="text-gray-100  border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header>Total de Compras</th>
+        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.totalSells |number}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  </div>
+
+  <mat-paginator class="bg-slate-900 text-gray-100 w-full" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Seleccione pagina de contactos"></mat-paginator>
+</div>

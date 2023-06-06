@@ -3,8 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .mdc-notched-outline__notch {
   border-right: none;
+}
+
+.mat-mdc-paginator-icon {
+  @apply fill-gray-100;
 }
 
 // html, body { height: 100%; }

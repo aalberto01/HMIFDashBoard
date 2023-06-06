@@ -20,15 +20,20 @@
   </section>
 
   <section class="flex flex-wrap gap-3 justify-center ">
-    <article>
+
+    <article *ngIf="sellsXClient$ |async as sells">
       <app-card [title]="'total compras x cliente top 3'" >
-        <app-pie-chart [pieChartDatasets]="dataSet1" [pieChartLabels]="labels1"></app-pie-chart>
+        <app-pie-chart
+          [pieChartDatasets]="[{ data: sells.valuesList }]"
+          [pieChartLabels]="sells.labelList" />
       </app-card>
     </article>
 
-    <article>
-      <app-card [title]="'visitas x cliente top 3'" >
-        <app-pie-chart [pieChartDatasets]="dataSet2" [pieChartLabels]="labels2"></app-pie-chart>
+    <article *ngIf="visitsXClient$ |async as visits">
+      <app-card [title]="'visitas x cliente top 3'">
+        <app-pie-chart
+          [pieChartDatasets]="[{ data: visits.valuesList}]"
+          [pieChartLabels]="visits.labelList" />
       </app-card>
     </article>
   </section>
