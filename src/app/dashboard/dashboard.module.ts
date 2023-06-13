@@ -21,10 +21,11 @@ import { ClientsTableComponent } from './components/clients-table/clients-table.
 import { LeadsPageComponent } from './pages/leads-page/leads-page.component';
 import { LeadsTableComponent } from './components/leads-table/leads-table.component';
 import { ContactInfoDialogComponent } from './components/contact-info-dialog/contact-info-dialog.component';
+import { LeadInfoDialogComponent } from './components/lead-info-dialog/lead-info-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [ KpiDashboardComponent, CardComponent, ClientsListComponent, ClientsTableComponent, LeadsPageComponent, LeadsTableComponent, ContactInfoDialogComponent ],
+  declarations: [ KpiDashboardComponent, CardComponent, ClientsListComponent, ClientsTableComponent, LeadsPageComponent, LeadsTableComponent, ContactInfoDialogComponent,LeadInfoDialogComponent ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
