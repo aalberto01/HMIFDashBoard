@@ -1,0 +1,71 @@
+<div class="p-2">
+  <h2 class="">Informacion de contacto</h2>
+  <form [formGroup]="clientForm">
+
+
+    <!-- <mat-form-field class="example-full-width">
+      <mat-label>Nombre de Contacto</mat-label>
+      <input type="text" matInput formControlName="contact" [errorStateMatcher]="matcher"
+             placeholder="Ex. pedro">
+      <mat-hint>Errors appear instantly!</mat-hint>
+      <mat-error *ngIf="clientForm.hasError('required')">
+        El nombre es <strong>requerido</strong>
+      </mat-error>
+    </mat-form-field> -->
+
+    <div class="flex justify-end mt-2 mb-2">
+      <mat-slide-toggle color="primary" formControlName="active">Activo</mat-slide-toggle>
+    </div>
+
+    <div class=" md:flex gap-1 ">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre de contacto</mat-label>
+        <input type="text" matInput formControlName="contact" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="clientForm.hasError('required')">
+          El nombre es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="demo-full-width" appearance="fill">
+        <mat-label>Prioridad</mat-label>
+        <mat-select formControlName="priority" [errorStateMatcher]="matcher">
+          <mat-option value="Alta">Alta</mat-option>
+          <mat-option value="Media">Media</mat-option>
+          <mat-option value="Baja">Baja</mat-option>
+        </mat-select>
+        <mat-error *ngIf="clientForm.hasError('required')">Debes de seleccionar una opcion</mat-error>
+
+      </mat-form-field>
+
+    </div>
+
+    <div class="md: flex gap-1">
+      <mat-form-field class="example-full-width">
+        <mat-label>Telefono</mat-label>
+        <input type="tel" matInput formControlName="phone" [errorStateMatcher]="matcher"
+               placeholder="Ex. 31777788">
+        <mat-error *ngIf="clientForm.hasError('required')">
+          El telefono es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>Veces contactado</mat-label>
+        <input type="number" matInput formControlName="contactCounter" [errorStateMatcher]="matcher">
+      </mat-form-field>
+    </div>
+
+    <div >
+      <button mat-raised-button color="primary">Guardar</button>
+    </div>
+  </form>
+</div>

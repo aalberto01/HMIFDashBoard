@@ -3,6 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { IClientListTable, ILeadListTable } from '../../interfaces';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactInfoDialogComponent } from '../contact-info-dialog/contact-info-dialog.component';
 
 @Component({
   selector: 'app-leads-table',
@@ -11,12 +13,14 @@ import { IClientListTable, ILeadListTable } from '../../interfaces';
   ]
 })
 export class LeadsTableComponent {
-  displayedColumns: string[] = ['lead', 'status', 'phone', 'email'];
+  displayedColumns: string[] = ['lead', 'status', 'phone', 'email', 'action'];
 
   @Input({required:true}) dataSource!: MatTableDataSource<ILeadListTable[] | null>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  constructor(public dialog: MatDialog) {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -31,4 +35,16 @@ export class LeadsTableComponent {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ContactInfoDialogComponent, {
+      data: this.dataSource.data,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
+
 }

@@ -3,6 +3,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { IClientListTable } from '../../interfaces/';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { ContactInfoDialogComponent } from '../contact-info-dialog/contact-info-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-clients-table',
@@ -11,12 +13,15 @@ import { MatPaginator } from '@angular/material/paginator';
 
 })
 export class ClientsTableComponent implements AfterViewInit {
-  displayedColumns: string[] = ['contact', 'priority', 'phone', 'email', 'contactCounter', 'totalSells'];
+  displayedColumns: string[] = ['contact', 'priority', 'phone', 'email', 'contactCounter', 'totalSells', 'action'];
 
   @Input({required:true}) dataSource!: MatTableDataSource<IClientListTable[] | null>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+
+  constructor(public dialog: MatDialog) {}
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -32,4 +37,14 @@ export class ClientsTableComponent implements AfterViewInit {
     }
   }
 
+  openDialog( data: IClientListTable ): void {
+    const dialogRef = this.dialog.open(ContactInfoDialogComponent, {
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+  }
 }
