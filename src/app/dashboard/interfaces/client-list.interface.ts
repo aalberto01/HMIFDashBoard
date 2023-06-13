@@ -6,3 +6,12 @@ export interface IClientListTable {
   contactCounter: number;
   totalSells: number;
 }
+
+export interface ILeadListTable {
+
+  lead: string;
+  status: string;
+  phone: string;
+  email: string;
+
+}

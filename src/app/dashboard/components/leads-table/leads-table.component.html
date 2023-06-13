@@ -8,39 +8,27 @@
     <table mat-table class="bg-slate-800  w-full" [dataSource]="dataSource" matSort>
 
       <!-- contact Column -->
-      <ng-container matColumnDef="contact">
-        <th class="text-gray-100 border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Contacto </th>
-        <td class="text-gray-100" mat-cell *matCellDef="let row"> {{row.contact}} </td>
+      <ng-container matColumnDef="lead">
+        <th class="text-gray-100 border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Lead </th>
+        <td class="text-gray-100" mat-cell *matCellDef="let row"> {{row.lead}} </td>
       </ng-container>
 
       <!-- priority Column -->
-      <ng-container matColumnDef="priority">
-        <th class="text-gray-100 border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Prioridad </th>
-        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.priority}} </td>
+      <ng-container matColumnDef="status">
+        <th class="text-gray-100 border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+        <td class="text-gray-100 " mat-cell *matCellDef="let row"> {{row.status}} </td>
       </ng-container>
 
       <!-- phone Column -->
       <ng-container matColumnDef="phone">
         <th class="text-gray-100  border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
-        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.phone}} </td>
+        <td class="text-gray-100 " mat-cell *matCellDef="let row"> {{row.phone}} </td>
       </ng-container>
 
       <!-- email Column -->
       <ng-container matColumnDef="email">
         <th class="text-gray-100  border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Correo </th>
-        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.email}} </td>
-      </ng-container>
-
-       <!-- contactCounter Column -->
-       <ng-container matColumnDef="contactCounter">
-        <th class="text-gray-100  border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header> Veces Contactado</th>
-        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.contactCounter}} </td>
-      </ng-container>
-
-       <!-- totalSells Column -->
-       <ng-container matColumnDef="totalSells">
-        <th class="text-gray-100  border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header>Total de Compras</th>
-        <td class="text-gray-100 text-center" mat-cell *matCellDef="let row"> {{row.totalSells |number}} </td>
+        <td class="text-gray-100 " mat-cell *matCellDef="let row"> {{row.email}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

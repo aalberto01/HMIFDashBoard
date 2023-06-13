@@ -13,9 +13,11 @@ import { KpiDashboardComponent } from './pages/kpi-dashboard/kpi-dashboard.compo
 import { PieChartComponent } from '../components/pie-chart/pie-chart.component';
 import { ClientsListComponent } from './pages/clients-list/clients-list.component';
 import { ClientsTableComponent } from './components/clients-table/clients-table.component';
+import { LeadsPageComponent } from './pages/leads-page/leads-page.component';
+import { LeadsTableComponent } from './components/leads-table/leads-table.component';
 
 @NgModule({
-  declarations: [ KpiDashboardComponent, CardComponent, ClientsListComponent, ClientsTableComponent ],
+  declarations: [ KpiDashboardComponent, CardComponent, ClientsListComponent, ClientsTableComponent, LeadsPageComponent, LeadsTableComponent ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
