@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { IClientListTable, ILeadListTable } from '../../interfaces';
 import { MatDialog } from '@angular/material/dialog';
-import { ContactInfoDialogComponent } from '../contact-info-dialog/contact-info-dialog.component';
+import { LeadInfoDialogComponent } from '../lead-info-dialog/lead-info-dialog.component';
 
 @Component({
   selector: 'app-leads-table',
@@ -36,9 +36,9 @@ export class LeadsTableComponent {
     }
   }
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(ContactInfoDialogComponent, {
-      data: this.dataSource.data,
+  openDialog(data: ILeadListTable): void {
+    const dialogRef = this.dialog.open(LeadInfoDialogComponent, {
+      data: data,
     });
 
     dialogRef.afterClosed().subscribe(result => {

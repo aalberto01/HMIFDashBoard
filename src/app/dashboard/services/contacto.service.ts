@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IClientListTable, ILeadListTable } from '../interfaces';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { fakerES_MX as faker} from '@faker-js/faker';
+// Se deja esta seed para que los resultados no varien.
 faker.seed(123)
 @Injectable({
   providedIn: 'root'
@@ -10,20 +11,23 @@ export class ContactoService {
 
   
   private contacatList = this.initializeClientListTableElement();
-  private leadList: ILeadListTable[] | null = [
-    {id: '1', lead: 'Pedro', email: 'pedro@gmail.com', phone: '32331250', status: 'lead'},
-    {id: '2', lead: 'Juan', email: 'juan@gmail.com', phone: '31283480', status: 'lead'},
-    {id: '3', lead: 'Jaime', email: 'jaime@gmail.com', phone: '31703252', status: 'lead'},
-    {id: '4', lead: 'Fernando Vega', email: 'vegafernando@gmail.com', phone: '31353350', status: 'contactado'},
-    {id: '5', lead: 'Fernando Vega', email: 'vegafernando@gmail.com', phone: '31513350', status: 'contactado'},
-    {id: '6', lead: 'Fernando Vega', email: 'vegafernando@gmail.com', phone: '31623350', status: 'contactado'},
-  ]
+  private leadList: ILeadListTable[] | null = this.initializeLeadListTableElement();
 
   private _contactListBS: BehaviorSubject<IClientListTable[] | null> = new BehaviorSubject(this.contacatList);
 
   private _leadListTable: BehaviorSubject<ILeadListTable[] | null> = new BehaviorSubject(this.leadList);
 
   constructor() { }
+  private createLeadListTableElement():ILeadListTable{
+    return  {
+      id: faker.number.int().toString(),
+      lead: faker.person.fullName(),
+      status: faker.helpers.arrayElement(['Lead', 'Contactado']),
+      phone: faker.phone.number("3#######"),
+      email: faker.internet.email(),
+      active: faker.datatype.boolean(0.9),
+    }
+  }
   private createClientListTableElement():IClientListTable{
     return  {
       id: faker.number.int().toString(),
@@ -36,6 +40,14 @@ export class ContactoService {
       active: faker.datatype.boolean(0.9),
     }
   }
+  initializeLeadListTableElement():ILeadListTable[] | null{
+    let arr = [] as ILeadListTable[]
+    for(let i = 0; i<10;i++){
+      arr.push(this.createLeadListTableElement());
+    }
+      return arr;
+  }
+  
   initializeClientListTableElement():IClientListTable[] | null{
   let arr = [] as IClientListTable[]
   for(let i = 0; i<10;i++){
@@ -60,5 +72,16 @@ export class ContactoService {
       return contact;
     }) as IClientListTable[] | null;
     this._contactListBS.next(this.contacatList);
+  }
+  saveLead(data: ILeadListTable){
+    if( !this.leadList ) return;
+
+    this.leadList = this.leadList?.map( contact => {
+      if(data.id === contact.id){
+        contact = { ...data }
+      }
+      return contact;
+    }) as ILeadListTable[] | null;
+    this._leadListTable.next(this.leadList);
   }
 }

@@ -35,7 +35,7 @@
       <ng-container matColumnDef="action">
         <th class="text-gray-100  border-gray-500" mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
         <td class="text-gray-100 " mat-cell *matCellDef="let row">
-          <button mat-mini-fab color="primary"> <mat-icon>edit</mat-icon> </button>
+          <button (click)="openDialog(row)" mat-mini-fab color="primary"> <mat-icon>edit</mat-icon> </button>
         </td>
       </ng-container>
 
