@@ -1,41 +1,39 @@
-import { Injectable } from '@angular/core';
+import { Injectable ,inject} from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
+import { ContactoService } from './contacto.service';
+
 import type { IKpiPiChartProcessData, IKpiPiChartRawData } from '../interfaces/kpi.interface';
+import { IClientListTable } from '../interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KpiService {
-
-  private sellsxClient: IKpiPiChartRawData[] | null= [
-    { label: 'Pedro', value: 1_000 },
-    { label: 'Juan', value: 2_000 },
-    { label: 'Jaime', value: 5_000 },
-  ];
-
-  private visitsxClient: IKpiPiChartRawData[] | null= [
-    { label: 'Pedro', value: 1 },
-    { label: 'Juan', value: 3 },
-    { label: 'Jaime', value: 5 },
-  ];
-
-  private _sellsxClientBS: BehaviorSubject<IKpiPiChartRawData[] | null> = new BehaviorSubject(this.sellsxClient);
-  private _visitsxClientBS: BehaviorSubject<IKpiPiChartRawData[] | null> = new BehaviorSubject(this.visitsxClient);
-
+  private contactService = inject(ContactoService);
   constructor() { }
 
   getSellsXClient(): Observable<IKpiPiChartProcessData | null>{
-    return this._sellsxClientBS.pipe(
+    return this.contactService.getContactList().pipe(
+      map( this.transformClientSells ),
       map( this.transformDataForCharts )
-    );;
+    );
+    
   }
 
   getVisitXClient(): Observable<IKpiPiChartProcessData | null> {
-    return this._visitsxClientBS.pipe(
+    return this.contactService.getContactList().pipe(
+      map( this.transformClientContacts ),
       map( this.transformDataForCharts )
     );
   }
-
+  transformClientSells(data:IClientListTable[] | null):IKpiPiChartRawData[] | null{
+    if( !data || data.length === 0 ) return null;
+    return data.map(el=> {return{label:el.contact,value:el.totalSells}as IKpiPiChartRawData });
+  }
+  transformClientContacts(data:IClientListTable[] | null):IKpiPiChartRawData[] | null{
+    if( !data || data.length === 0 ) return null;
+    return data.map(el=> {return{label:el.contact,value:el.contactCounter}as IKpiPiChartRawData });
+  }
   transformDataForCharts( data: IKpiPiChartRawData[] | null): IKpiPiChartProcessData | null{
     if( !data || data.length === 0 ) return null;
 
